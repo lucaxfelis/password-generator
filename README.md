@@ -29,6 +29,7 @@ Então, você deve clonar este repositório:
 
 ```
 git clone https://github.com/lucaxfelis/password-generator.git
+cd password-generator
 ```
 
 Em seguida, no diretório do script, você deve instalar os pacotes requeridos:
