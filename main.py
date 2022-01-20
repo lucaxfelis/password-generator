@@ -37,7 +37,8 @@ for i in complexity_list:
 password = ''
 
 # ensures there is one character of each type randomly
-random_keys = random.sample(complexity_dict.keys(), len(complexity_dict))
+random_keys = list(complexity_dict.keys())
+random.shuffle(random_keys)
 for k in random_keys:
     if k in complexity_list:
         password += random.sample(complexity_dict[k], 1)[0]
