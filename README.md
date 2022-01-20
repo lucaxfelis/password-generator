@@ -34,9 +34,6 @@ git clone https://github.com/lucaxfelis/password-generator.git
 Em seguida, no diretório do script, você deve instalar os pacotes requeridos:
 
 ```
-### Clipboard
-
-No fim da execução, sua senha estará no clipboard, pronta para ser colada em qualquer campo.
 pip install -r /(path-to-password-generator)/requirements.txt
 ```
 
@@ -46,3 +43,7 @@ Depois vocẽ deve executar o arquivo "main.py":
 python /(path-to-password-generator)/main.py
 ```
 **Obs: substituir o "path-to-password-generator" pelo caminho correto.**
+
+### Clipboard
+
+No fim da execução, sua senha estará no clipboard, pronta para ser colada em qualquer campo.
