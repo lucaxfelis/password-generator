@@ -2,9 +2,14 @@ import random
 import pyperclip
 #import email_sender
 
-print("\n# # # # # PASSWORD GENERATOR # # # # #\n")
+HEADER = "\n# # # # # PASSWORD GENERATOR # # # # #\n"
+COMPLEXITY_MSG = "\n# Digite separado por espaços (padrão 'a b n s'): "
+LENGTH_MSG = "# Digite a quantidade de caracteres (padrão 16): "
+SUCESS_MSG = "\n# Senha copiada para o clipboard!\n"
 
-password_length = int(input("# Digite a quantidade de caracteres (padrão 16): ") or 16)
+print(HEADER)
+
+password_length = int(input(LENGTH_MSG) or 16)
 
 # available caracteres
 upper_case = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
@@ -19,8 +24,7 @@ print("\t> letras minúsculas: digite 'b'")
 print("\t> dígitos: digite 'n'")
 print("\t> símbolos: digite 's'")
 
-complexity_msg = "\n# Digite separado por espaços (padrão 'a b n s'): "
-complexity_list = (input(complexity_msg) or 'a b n s') \
+complexity_list = (input(COMPLEXITY_MSG) or 'a b n s') \
     .lower().split(' ')
 
 # complexity keys and their charsets
@@ -50,4 +54,4 @@ password += ''.join(random.sample(all_chars,
 # copying password to clipboad
 pyperclip.copy(password)
 
-print("\n# Senha copiada para o clipboard!\n")
+print(SUCESS_MSG)
