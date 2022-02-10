@@ -19,8 +19,8 @@ print("\t> letras minúsculas: digite 'b'")
 print("\t> dígitos: digite 'n'")
 print("\t> símbolos: digite 's'")
 
-complexity_list = \
-    (input("\n# Digite separado por espaços (padrão 'a b n s'): ") or 'a b n s') \
+complexity_msg = "\n# Digite separado por espaços (padrão 'a b n s'): "
+complexity_list = (input(complexity_msg) or 'a b n s') \
     .lower().split(' ')
 
 # complexity keys and their charsets
