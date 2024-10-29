@@ -1,17 +1,5 @@
-from constants import (
-    CHAR_TYPES_MAP,
-    CHAR_TYPES_MSG,
-    DEFAULT_PASSWORD_LENGTH,
-    INVALID_CHAR_TYPES_MSG,
-    INVALID_DIGIT_MSG,
-    INVALID_LENGTH_MSG,
-    INVALID_SHOW_PASSWORD_OPTION_MSG,
-    LENGTH_MSG,
-    MIN_PASSWORD_LENGTH,
-    MAX_PASSWORD_LENGTH,
-    SHOW_PASSWORD_OPTIONS_MSG,
-    VALID_SHOW_PASSWORD_OPTIONS
-)
+import argparse
+from constants import *
 
 
 def prompt_for_password_length() -> int:
@@ -61,3 +49,29 @@ def prompt_for_show_password() -> bool:
             return user_input == 's'
         else:
             print(INVALID_SHOW_PASSWORD_OPTION_MSG)
+
+def parse_args():
+    """
+    Parse command-line arguments for the password generator.
+
+    Returns:
+        argparse.Namespace: Parsed command-line arguments.
+    """
+    parser = argparse.ArgumentParser(description="Password Generator")
+    parser.add_argument('-l', '--length', type=int, help=HELP_MSG_LENGTH)
+    parser.add_argument('-t', '--types', type=str, help=HELP_MSG_TYPES)
+    parser.add_argument('-s', '--show', type=str, choices=VALID_SHOW_PASSWORD_OPTIONS, help=HELP_MSG_SHOW)
+    args = parser.parse_args()
+
+    if args.length and not (MIN_PASSWORD_LENGTH <= args.length <= MAX_PASSWORD_LENGTH):
+        parser.error(INVALID_ARG_LENGTH_MSG)
+
+    if args.types:
+        selected_char_types = args.types.lower().strip().split(' ')
+        if not all(option in CHAR_TYPES_MAP.keys() for option in selected_char_types):
+            parser.error(INVALID_ARG_CHAR_TYPES_MSG)
+
+    if args.show and args.show not in VALID_SHOW_PASSWORD_OPTIONS:
+        parser.error(INVALID_ARG_SHOW_MSG)
+
+    return args
