@@ -1,7 +1,8 @@
 from constants import (
-    COMPLEXITY_MAP,
-    COMPLEXITY_MSG,
+    CHAR_TYPES_MAP,
+    CHAR_TYPES_MSG,
     DEFAULT_PASSWORD_LENGTH,
+    INVALID_CHAR_TYPES_MSG,
     INVALID_DIGIT_MSG,
     INVALID_LENGTH_MSG,
     LENGTH_MSG,
@@ -26,16 +27,17 @@ def prompt_for_password_length() -> int:
         except ValueError:
             print(INVALID_DIGIT_MSG)
 
-def prompt_for_password_complexity() -> list:
+def prompt_for_password_char_types() -> list:
     """
-    Prompt the user to enter the desired password complexity.
+    Prompt the user to enter the desired password char types.
     
     Returns:
-        list: A list of selected complexities in lowercase.
+        list: A list of selected char types keys in lowercase.
     """
     while True:
-        complexity_list = (input(COMPLEXITY_MSG) or 'a b n s').lower().strip().split(' ')
-        if all(option in COMPLEXITY_MAP.keys() for option in complexity_list):
-            return complexity_list
+        default_char_types = ' '.join(CHAR_TYPES_MAP.keys())
+        user_char_types = (input(CHAR_TYPES_MSG) or default_char_types).lower().strip().split(' ')
+        if all(option in CHAR_TYPES_MAP.keys() for option in user_char_types):
+            return user_char_types
         else:
-            print("Invalid complexity options. Please enter valid options: 'a', 'b', 'n', 's'.")
+            print(INVALID_CHAR_TYPES_MSG)

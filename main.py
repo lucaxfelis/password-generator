@@ -1,8 +1,8 @@
 import random
 import pyperclip
-from constants import COMPLEXITY_MAP
-from input import prompt_for_password_complexity, prompt_for_password_length
-from output import print_complexity_menu
+from constants import CHAR_TYPES_MAP
+from input import prompt_for_password_char_types, prompt_for_password_length
+from output import print_char_types_menu
 
 HEADER = "\n# # # # # PASSWORD GENERATOR # # # # #\n"
 SUCESS_MSG = "\n# Senha copiada para o clipboard!\n"
@@ -13,10 +13,10 @@ print(HEADER)
 
 password_length = prompt_for_password_length()
 
-print_complexity_menu()
-complexity_list = prompt_for_password_complexity()
+print_char_types_menu()
+complexity_list = prompt_for_password_char_types()
 
-complexity_dict = COMPLEXITY_MAP
+complexity_dict = CHAR_TYPES_MAP
 
 # generating password
 all_chars = ''

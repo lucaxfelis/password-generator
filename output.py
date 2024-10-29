@@ -1,7 +1,7 @@
-from constants import COMPLEXITY_MENU_MSG
+from constants import CHAR_TYPES_MENU_MSG
 
-def print_complexity_menu() -> None:
+def print_char_types_menu() -> None:
     """
-    Print the complexity menu for password generation options.
+    Print the char types menu for password generation options.
     """
-    print(COMPLEXITY_MENU_MSG)
+    print(CHAR_TYPES_MENU_MSG)
