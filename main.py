@@ -1,38 +1,22 @@
 import random
 import pyperclip
-import string
-from input import prompt_for_password_length
+from constants import COMPLEXITY_MAP
+from input import prompt_for_password_complexity, prompt_for_password_length
+from output import print_complexity_menu
 
 HEADER = "\n# # # # # PASSWORD GENERATOR # # # # #\n"
-COMPLEXITY_MSG = "\n# Digite separado por espaços (padrão 'a b n s'): "
 SUCESS_MSG = "\n# Senha copiada para o clipboard!\n"
+
+
 
 print(HEADER)
 
 password_length = prompt_for_password_length()
 
-uppercase_alphabet = string.ascii_uppercase
-lowercase_alphabet = string.ascii_lowercase
-numbers = string.digits
-symbols = "#$%&()*+-<=>?!@[\]_{|}"
+print_complexity_menu()
+complexity_list = prompt_for_password_complexity()
 
-# complexity menu
-print("\n# Decida a complexidade...\n")
-print("\t> letras maísculas: digite 'a'")
-print("\t> letras minúsculas: digite 'b'")
-print("\t> dígitos: digite 'n'")
-print("\t> símbolos: digite 's'")
-
-complexity_list = (input(COMPLEXITY_MSG) or 'a b n s') \
-    .lower().split(' ')
-
-# complexity keys and their charsets
-complexity_dict = {
-    'a': uppercase_alphabet,
-    'b': lowercase_alphabet,
-    'n': numbers,
-    's': symbols
-}
+complexity_dict = COMPLEXITY_MAP
 
 # generating password
 all_chars = ''
