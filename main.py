@@ -13,10 +13,10 @@ def main():
     else:
         password_length = prompt_for_password_length()
 
-    print_char_types_menu()
     if args.types:
         selected_char_types = args.types.lower().strip().split(' ')
     else:
+        print_char_types_menu()    
         selected_char_types = prompt_for_password_char_types()
 
     available_chars = get_available_characters(selected_char_types)
